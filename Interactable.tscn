@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://bnx4bdviwaaec"]
+
+[ext_resource type="Script" uid="uid://dmoq11f5i5a2t" path="res://interact_box.gd" id="1_msfch"]
+
+[sub_resource type="Gradient" id="Gradient_euik2"]
+colors = PackedColorArray(0, 1, 0, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_msfch"]
+gradient = SubResource("Gradient_euik2")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_euik2"]
+size = Vector2(160, 160)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v7umd"]
+size = Vector2(64, 64)
+
+[node name="Interactable" type="StaticBody2D" unique_id=580602865]
+script = ExtResource("1_msfch")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1576155961]
+texture = SubResource("GradientTexture2D_msfch")
+
+[node name="InteractBox" type="Area2D" parent="." unique_id=1133013379]
+
+[node name="Box" type="CollisionShape2D" parent="InteractBox" unique_id=59491716]
+shape = SubResource("RectangleShape2D_euik2")
+
+[node name="CollisionBox" type="CollisionShape2D" parent="." unique_id=424015766]
+shape = SubResource("RectangleShape2D_v7umd")
+debug_color = Color(1, 0, 0, 0.41960785)

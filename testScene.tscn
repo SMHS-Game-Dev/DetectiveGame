@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://c7cbdc223ouy1"]
+
+[ext_resource type="PackedScene" uid="uid://bm6vobtmfknkq" path="res://player.tscn" id="1_2atia"]
+[ext_resource type="PackedScene" uid="uid://bnx4bdviwaaec" path="res://Interactable.tscn" id="2_vixnb"]
+
+[sub_resource type="Gradient" id="Gradient_2atia"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_vixnb"]
+gradient = SubResource("Gradient_2atia")
+width = 1000
+height = 600
+
+[node name="Node2D" type="Node2D" unique_id=115110484]
+
+[node name="Player" parent="." unique_id=129534329 instance=ExtResource("1_2atia")]
+
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=1849933867]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=798525209]
+texture = SubResource("GradientTexture2D_vixnb")
+
+[node name="StaticBody2D" parent="." unique_id=580602865 instance=ExtResource("2_vixnb")]
+position = Vector2(-391, -200)
+
+[node name="Interactable" parent="." unique_id=980967710 instance=ExtResource("2_vixnb")]
+position = Vector2(5, -207)
+id = 1
+
+[node name="Interactable2" parent="." unique_id=22524369 instance=ExtResource("2_vixnb")]
+position = Vector2(364, -203)
+id = 2
