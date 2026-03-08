@@ -21,7 +21,7 @@ DialogueManager="*uid://bb7ul7jnvhn5k"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/discord-rpc-gd/plugin.cfg")
+enabled=PackedStringArray()
 
 [input]
 

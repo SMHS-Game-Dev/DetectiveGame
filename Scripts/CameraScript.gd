@@ -23,32 +23,45 @@ func _physics_process(delta: float) -> void:
 	var resNegY = space_state.intersect_ray(camRayNegY)
 	var moveCamX = true
 	var moveCamY = true
-	velocity = player.velocity
+	var playVel = player.velocity
+	velocity = playVel
 	
-	if resX and player.velocity.x > 0:
+	if resX and playVel.x > 0:
 		velocity.x = 0 
 		moveCamX = false
-	if resNegX and player.velocity.x < 0:
+	if resNegX and playVel.x < 0:
 		velocity.x = 0
 		moveCamX = false
 
-	if resY and player.velocity.y < 0:
+	if resY and playVel.y < 0:
 		velocity.y = 0
 		moveCamY = false
-	if resNegY and player.velocity.y > 0:
+	if resNegY and playVel.y > 0:
 		velocity.y = 0
 		moveCamY = false
 
-	if moveCamX and (camPos.x - playPos.x > 10.0 or camPos.x - playPos.x < -10.0):
-
-			velocity.x = player.velocity.x * 0.2
-	
+	if moveCamX and camPos.x - playPos.x > 10.0:
+			if playVel.x > 0:
+				velocity.x = playVel.x * 0.2
+			else:
+				velocity.x = playVel.x * 2
+	elif moveCamX and camPos.x - playPos.x < -10.0:
+		if playVel.x > 0:
+			velocity.x = playVel.x * 2
+		else:
+			velocity.x = playVel.x * 0.2
 	elif moveCamX:
 		self.global_position.x = playPos.x
-	if moveCamY and (camPos.y - playPos.y > 10.0 or camPos.y - playPos.y < -10.0):
-
-			velocity.y = player.velocity.y * 0.2
-	
+	if moveCamY and camPos.y - playPos.y > 10.0:
+			if playVel.y > 0:
+				velocity.y = playVel.y * 0.2
+			else:
+				velocity.y = playVel.y * 2
+	elif moveCamY and camPos.y - playPos.y < -10.0:
+		if playVel.y > 0:
+			velocity.y = playVel.y * 2
+		else:
+			velocity.y = playVel.y * 0.2
 	elif moveCamY:
 		self.global_position.y = playPos.y
 	move_and_slide()

@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bm6vobtmfknkq" path="res://Scenes/Player.tscn" id="1_5lt6y"]
 [ext_resource type="PackedScene" uid="uid://bnx4bdviwaaec" path="res://Scenes/Interactable.tscn" id="2_8k7wh"]
-[ext_resource type="Script" uid="uid://dk4vksqmuusnh" path="res://Scenes/cameraScript.gd" id="3_8k7wh"]
+[ext_resource type="Script" uid="uid://dk4vksqmuusnh" path="res://Scripts/CameraScript.gd" id="3_8k7wh"]
 
 [sub_resource type="Gradient" id="Gradient_2atia"]
 
