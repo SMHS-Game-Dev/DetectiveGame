@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bm6vobtmfknkq" path="res://Scenes/Player.tscn" id="1_5lt6y"]
 [ext_resource type="PackedScene" uid="uid://bnx4bdviwaaec" path="res://Scenes/Interactable.tscn" id="2_8k7wh"]
+[ext_resource type="Script" uid="uid://dk4vksqmuusnh" path="res://Scenes/cameraScript.gd" id="3_8k7wh"]
 
 [sub_resource type="Gradient" id="Gradient_2atia"]
 
@@ -10,11 +11,17 @@ gradient = SubResource("Gradient_2atia")
 width = 1000
 height = 600
 
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_8k7wh"]
+a = Vector2(-6, -631)
+b = Vector2(-8, 838)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_iufkg"]
+a = Vector2(1129, 6)
+b = Vector2(-830, -11)
+
 [node name="Node2D" type="Node2D" unique_id=115110484]
 
 [node name="Player" parent="." unique_id=129534329 instance=ExtResource("1_5lt6y")]
-
-[node name="Camera2D" type="Camera2D" parent="Player" unique_id=1849933867]
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=798525209]
 texture = SubResource("GradientTexture2D_vixnb")
@@ -32,3 +39,46 @@ position = Vector2(348, -200)
 dialogue_file = "res://JSON/Dialogue/NPC3.json"
 
 [node name="GUI" type="CanvasLayer" parent="." unique_id=1279686815]
+
+[node name="CameraBody" type="CharacterBody2D" parent="." unique_id=2052365943]
+script = ExtResource("3_8k7wh")
+
+[node name="Camera2D" type="Camera2D" parent="CameraBody" unique_id=1849933867]
+position_smoothing_enabled = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1837471567]
+collision_layer = 17
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D" unique_id=1830556510]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1721723377]
+position = Vector2(-857, -184)
+shape = SubResource("SegmentShape2D_8k7wh")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="." unique_id=2105280798]
+collision_layer = 17
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D2" unique_id=561238634]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2" unique_id=997120558]
+position = Vector2(-4, 648)
+shape = SubResource("SegmentShape2D_iufkg")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="." unique_id=1834518405]
+position = Vector2(1155, -159)
+collision_layer = 17
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D3" unique_id=1324247479]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3" unique_id=480764535]
+position = Vector2(-8, -19)
+shape = SubResource("SegmentShape2D_8k7wh")
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="." unique_id=653253801]
+collision_layer = 17
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D4" unique_id=1704122281]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D4" unique_id=1707436195]
+position = Vector2(-32, -811)
+shape = SubResource("SegmentShape2D_iufkg")
