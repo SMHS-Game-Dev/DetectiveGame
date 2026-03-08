@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://dtjniwi8kvqnc"]
+
+[ext_resource type="Script" uid="uid://cbr1x7rsenvc2" path="res://Scripts/KeyPromptHandler.gd" id="1_twpm2"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c1lcp"]
+bg_color = Color(0.14550123, 0.14550123, 0.14550123, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_twpm2"]
+bg_color = Color(0, 0, 0, 0.6784314)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="KeyPopup" type="Panel" unique_id=454140438]
+offset_top = 20.0
+offset_right = 100.0
+offset_bottom = 120.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_c1lcp")
+script = ExtResource("1_twpm2")
+can_interact = null
+dialogue_file = null
+
+[node name="Shadow" type="Panel" parent="." unique_id=531464755]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.1
+theme_override_styles/panel = SubResource("StyleBoxFlat_twpm2")
+
+[node name="Letter" type="Label" parent="." unique_id=1920175757]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.3019608)
+theme_override_font_sizes/font_size = 50
+text = "E"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="resized" from="." to="." method="_on_resized"]

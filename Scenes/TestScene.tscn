@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://c7cbdc223ouy1"]
+
+[ext_resource type="PackedScene" uid="uid://bm6vobtmfknkq" path="res://Scenes/Player.tscn" id="1_5lt6y"]
+[ext_resource type="PackedScene" uid="uid://bnx4bdviwaaec" path="res://Scenes/Interactable.tscn" id="2_8k7wh"]
+
+[sub_resource type="Gradient" id="Gradient_2atia"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_vixnb"]
+gradient = SubResource("Gradient_2atia")
+width = 1000
+height = 600
+
+[node name="Node2D" type="Node2D" unique_id=115110484]
+
+[node name="Player" parent="." unique_id=129534329 instance=ExtResource("1_5lt6y")]
+
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=1849933867]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=798525209]
+texture = SubResource("GradientTexture2D_vixnb")
+
+[node name="NPC 1" parent="." unique_id=580602865 instance=ExtResource("2_8k7wh")]
+position = Vector2(-350, -200)
+dialogue_file = "res://JSON/Dialogue/NPC1.json"
+
+[node name="NPC 2" parent="." unique_id=980967710 instance=ExtResource("2_8k7wh")]
+position = Vector2(0, -200)
+dialogue_file = "res://JSON/Dialogue/NPC2.json"
+
+[node name="NPC 3" parent="." unique_id=22524369 instance=ExtResource("2_8k7wh")]
+position = Vector2(348, -200)
+dialogue_file = "res://JSON/Dialogue/NPC3.json"
+
+[node name="GUI" type="CanvasLayer" parent="." unique_id=1279686815]

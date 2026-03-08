@@ -1,0 +1,45 @@
+@tool
+extends Panel
+
+var location: Vector2
+var can_interact: bool = false
+
+func _ready() -> void:
+	_on_resized()
+	location = position
+	position.y = location.y + 20
+
+func _on_resized() -> void:
+	$Letter.add_theme_font_size_override("font_size", int(size.x * 0.5))
+
+func _on_interactable_player_near(state: bool) -> void:
+	can_interact = state
+	if state:
+		show_key()
+	else:
+		hide_key()
+
+func show_key():
+	modulate.a = 0
+	visible = true
+	
+	var moveTween = create_tween()
+	moveTween.tween_property(self, "position:y", location.y, 0.3) \
+	.set_ease(Tween.EASE_OUT) \
+	.set_trans(Tween.TRANS_QUART)
+	
+	var opacityTween = create_tween()
+	opacityTween.tween_property(self, "modulate:a", 1, 0.3) \
+	.set_ease(Tween.EASE_OUT) \
+	.set_trans(Tween.TRANS_QUART)
+	
+func hide_key():
+	var moveTween = create_tween()
+	moveTween.tween_property(self, "position:y", location.y + 20, 0.3) \
+	.set_ease(Tween.EASE_OUT) \
+	.set_trans(Tween.TRANS_QUART)
+	
+	var opacityTween = create_tween()
+	opacityTween.tween_property(self, "modulate:a", 0, 0.3) \
+	.set_ease(Tween.EASE_OUT) \
+	.set_trans(Tween.TRANS_QUART)

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bm6vobtmfknkq"]
 
-[ext_resource type="Script" uid="uid://dw6e0j86ordpe" path="res://player.gd" id="1_4flbx"]
+[ext_resource type="Script" uid="uid://dw6e0j86ordpe" path="res://Scripts/Player.gd" id="1_4flbx"]
 
 [sub_resource type="Gradient" id="Gradient_sh265"]
 colors = PackedColorArray(0, 0, 1, 1, 1, 1, 1, 1)
@@ -11,17 +11,12 @@ gradient = SubResource("Gradient_sh265")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_onrkg"]
 size = Vector2(64, 64)
 
-[node name="Player" type="CharacterBody2D" unique_id=129534329]
+[node name="Player" type="CharacterBody2D" unique_id=129534329 groups=["player"]]
 z_index = 5
 script = ExtResource("1_4flbx")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1104293689]
 texture = SubResource("GradientTexture2D_4flbx")
 
-[node name="Area2D" type="Area2D" parent="." unique_id=370960977]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1871572186]
-visible = false
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1871572186]
 shape = SubResource("RectangleShape2D_onrkg")
-
-[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

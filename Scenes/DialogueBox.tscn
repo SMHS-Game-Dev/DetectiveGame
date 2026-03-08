@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://7viuo2e6k4qx"]
+
+[ext_resource type="Script" uid="uid://ltjmk0nrfc3l" path="res://Scripts/DialogueBox.gd" id="1_m4115"]
+[ext_resource type="FontFile" uid="uid://db3srdpi3haqe" path="res://Fonts/CourierPrime.ttf" id="2_mjj0w"]
+[ext_resource type="Script" uid="uid://ccjf6expreoyt" path="res://Scripts/TextDropIn.gd" id="2_sh7kx"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sh7kx"]
+bg_color = Color(0.0885599, 0.0885599, 0.0885599, 0.7490196)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_mjj0w"]
+script = ExtResource("2_sh7kx")
+
+[node name="DialogueBox" type="Panel" unique_id=1364974473]
+anchors_preset = -1
+anchor_top = 0.77
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_sh7kx")
+script = ExtResource("1_m4115")
+
+[node name="Character" type="TextureRect" parent="." unique_id=460154963]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.055
+anchor_top = 0.025
+anchor_right = 0.168
+anchor_bottom = 0.975
+
+[node name="Dialogue" type="RichTextLabel" parent="." unique_id=1110392648]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.25
+anchor_right = 0.85
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/normal_font = ExtResource("2_mjj0w")
+theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
+custom_effects = [SubResource("RichTextEffect_mjj0w")]

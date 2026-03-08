@@ -1,0 +1,21 @@
+{
+	"detective": {
+		"name": "Detective",
+		"icon": "res://Images/detective.png"
+	},
+	
+	"npc1": {
+		"name": "NPC 1",
+		"icon": "res://Images/npc.png"
+	},
+	
+	"npc2": {
+		"name": "NPC 2",
+		"icon": "res://Images/npc.png"
+	},
+	
+	"npc3": {
+		"name": "NPC 3",
+		"icon": "res://Images/npc.png"
+	}
+}
