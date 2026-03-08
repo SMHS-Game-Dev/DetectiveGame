@@ -40,4 +40,6 @@ grow_vertical = 2
 theme_override_fonts/normal_font = ExtResource("2_mjj0w")
 theme_override_font_sizes/normal_font_size = 24
 bbcode_enabled = true
+horizontal_alignment = 1
+vertical_alignment = 1
 custom_effects = [SubResource("RichTextEffect_mjj0w")]
