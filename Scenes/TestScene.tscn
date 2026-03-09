@@ -38,6 +38,10 @@ dialogue_file = "res://JSON/Dialogue/NPC2.json"
 position = Vector2(348, -200)
 dialogue_file = "res://JSON/Dialogue/NPC3.json"
 
+[node name="NPC 4" parent="." unique_id=1214360852 instance=ExtResource("2_8k7wh")]
+position = Vector2(64, -858)
+dialogue_file = "res://JSON/Dialogue/NPC4.json"
+
 [node name="GUI" type="CanvasLayer" parent="." unique_id=1279686815]
 
 [node name="CameraBody" type="CharacterBody2D" parent="." unique_id=2052365943]

@@ -1,67 +1,46 @@
 extends CharacterBody2D
 
+@onready var space_state: PhysicsDirectSpaceState2D = get_world_2d().direct_space_state
+@onready var cam: Camera2D = self.get_child(0)
+@onready var player: CharacterBody2D = get_parent().get_node("Player")
 
-# Called when the node enters the scene tree for the first time.
+var deadzone_x: float = 250.0
+var deadzone_y: float = 140.0
+
 func _ready() -> void:
-	pass
+	self.global_position = player.global_position
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
-	var space_state = get_world_2d().direct_space_state
-	var cam = self.get_child(0)
-	var player = get_parent().get_node("Player")
 	var playPos = player.global_position
-	var camPos  = cam.get_target_position()
-	var camRayX = PhysicsRayQueryParameters2D.create(camPos, Vector2 (playPos.x + 150, playPos.y), 16) #creates right facing ray
-	var camRayNegX = PhysicsRayQueryParameters2D.create(camPos, Vector2 (playPos.x - 150, playPos.y), 16)
-	var camRayY = PhysicsRayQueryParameters2D.create(camPos, Vector2 (playPos.x, playPos.y - 150), 16)
-	var camRayNegY = PhysicsRayQueryParameters2D.create(camPos, Vector2 (playPos.x, playPos.y + 150), 16)
-	var resX = space_state.intersect_ray(camRayX) 
-	var resNegX = space_state.intersect_ray(camRayNegX)
-	var resY = space_state.intersect_ray(camRayY)
-	var resNegY = space_state.intersect_ray(camRayNegY)
-	var moveCamX = true
-	var moveCamY = true
-	var playVel = player.velocity
-	velocity = playVel
-	
-	if resX and playVel.x > 0:
-		velocity.x = 0 
-		moveCamX = false
-	if resNegX and playVel.x < 0:
-		velocity.x = 0
-		moveCamX = false
+	var camPos = cam.get_target_position()
 
-	if resY and playVel.y < 0:
-		velocity.y = 0
-		moveCamY = false
-	if resNegY and playVel.y > 0:
-		velocity.y = 0
-		moveCamY = false
+	var viewport_size = get_viewport().get_visible_rect().size
+	var half_w = (viewport_size.x / 2.0) / cam.zoom.x
+	var half_h = (viewport_size.y / 2.0) / cam.zoom.y
 
-	if moveCamX and camPos.x - playPos.x > 10.0:
-			if playVel.x > 0:
-				velocity.x = playVel.x * 0.2
-			else:
-				velocity.x = playVel.x * 2
-	elif moveCamX and camPos.x - playPos.x < -10.0:
-		if playVel.x > 0:
-			velocity.x = playVel.x * 2
-		else:
-			velocity.x = playVel.x * 0.2
-	elif moveCamX:
-		self.global_position.x = playPos.x
-	if moveCamY and camPos.y - playPos.y > 10.0:
-			if playVel.y > 0:
-				velocity.y = playVel.y * 0.2
-			else:
-				velocity.y = playVel.y * 2
-	elif moveCamY and camPos.y - playPos.y < -10.0:
-		if playVel.y > 0:
-			velocity.y = playVel.y * 2
-		else:
-			velocity.y = playVel.y * 0.2
-	elif moveCamY:
-		self.global_position.y = playPos.y
+	var offset_x = playPos.x - self.global_position.x
+	var offset_y = playPos.y - self.global_position.y
+
+	if abs(offset_x) > deadzone_x: self.global_position.x = playPos.x - (sign(offset_x) * deadzone_x)
+	if abs(offset_y) > deadzone_y: self.global_position.y = playPos.y - (sign(offset_y) * deadzone_y)
+
+	velocity = Vector2.ZERO
+
+	var cam_ray_x = PhysicsRayQueryParameters2D.create(camPos, Vector2(camPos.x + half_w, camPos.y), 16)
+	var cam_ray_neg_x = PhysicsRayQueryParameters2D.create(camPos, Vector2(camPos.x - half_w, camPos.y), 16)
+	var cam_ray_y = PhysicsRayQueryParameters2D.create(camPos, Vector2(camPos.x, camPos.y - half_h), 16)
+	var cam_ray_neg_y = PhysicsRayQueryParameters2D.create(camPos, Vector2(camPos.x, camPos.y + half_h), 16)
+
+	var res_x = space_state.intersect_ray(cam_ray_x)
+	var res_neg_x = space_state.intersect_ray(cam_ray_neg_x)
+	var res_y = space_state.intersect_ray(cam_ray_y)
+	var res_neg_y = space_state.intersect_ray(cam_ray_neg_y)
+
+	var play_vel = player.velocity
+
+	if res_x and self.global_position.x > res_x.position.x    - half_w: self.global_position.x = res_x.position.x    - half_w
+	if res_neg_x and self.global_position.x < res_neg_x.position.x + half_w: self.global_position.x = res_neg_x.position.x + half_w
+	if res_y and self.global_position.y < res_y.position.y    + half_h: self.global_position.y = res_y.position.y    + half_h
+	if res_neg_y and self.global_position.y > res_neg_y.position.y - half_h: self.global_position.y = res_neg_y.position.y - half_h
+
 	move_and_slide()

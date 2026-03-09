@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 const SPEED: float = 300.0
+
 var input: Vector2 = Vector2.ZERO
 var timer: float = 0.0
 

@@ -1,6 +1,7 @@
 extends Node
 
-const dialogue_box_scene = preload("res://Scenes/DialogueBox.tscn")
+const DIALOGUE_BOX_SCENE = preload("res://Scenes/DialogueBox.tscn")
+
 var dialogue_box: Panel
 var canvas_layer: CanvasLayer
 var current_line: int = 0
@@ -13,7 +14,7 @@ func _ready():
 	canvas_layer = CanvasLayer.new()
 	get_tree().root.add_child.call_deferred(canvas_layer)
 	await get_tree().process_frame
-	dialogue_box = dialogue_box_scene.instantiate()
+	dialogue_box = DIALOGUE_BOX_SCENE.instantiate()
 	canvas_layer.add_child(dialogue_box)
 	await get_tree().process_frame
 	dialogue_box.visible = false
@@ -23,6 +24,10 @@ func _ready():
 	character_data = load_json("res://JSON/Characters.json")
 	
 func load_json(path: String) -> Dictionary:
+	if (path.is_empty()):
+		push_error("No Path URL")
+		return {}
+		
 	var file = FileAccess.open(path, FileAccess.READ)
 	var json_string = file.get_as_text()
 	file.close()
