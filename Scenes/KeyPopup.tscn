@@ -17,13 +17,11 @@ corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
 [node name="KeyPopup" type="Panel" unique_id=454140438]
-offset_top = 20.0
+offset_top = 40.0
 offset_right = 100.0
-offset_bottom = 120.0
+offset_bottom = 140.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_c1lcp")
 script = ExtResource("1_twpm2")
-can_interact = null
-dialogue_file = null
 
 [node name="Shadow" type="Panel" parent="." unique_id=531464755]
 show_behind_parent = true

@@ -22,5 +22,10 @@
 	"npc4": {
 		"name": "NPC 4",
 		"icon": "res://Images/npc.png"
+	},
+	
+	"npc5": {
+		"name": "NPC 5",
+		"icon": "res://Images/npc.png"
 	}
 }

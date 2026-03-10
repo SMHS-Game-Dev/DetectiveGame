@@ -13,14 +13,14 @@ var character_data: Dictionary = {}
 var is_animating: bool = false
 var in_dialogue: bool = false
 
-func _ready() -> void:	
+func _ready() -> void:
 	canvas_layer = CanvasLayer.new()
 	get_tree().root.add_child.call_deferred(canvas_layer)
 	dialogue_box = DIALOGUE_BOX_SCENE.instantiate() as Panel
 	canvas_layer.add_child(dialogue_box)
 	dialogue_box.visible = false
 	dialogue_box.connect("resized", _on_dialogue_resized)
-	dialogue_box.connect("animation_finished", _on_animation_finished)
+	dialogue_box.connect("animation_finished", func() -> void: is_animating = false)
 	
 	character_data = load_json("res://Data/Characters.json")
 	
@@ -80,9 +80,6 @@ func advance_dialogue() -> void:
 		dialogue_box.skip_animation()
 		return
 	show_line("")
-
-func _on_animation_finished() -> void:
-	is_animating = false
 	
 func end_dialogue() -> void:
 	in_dialogue = false
