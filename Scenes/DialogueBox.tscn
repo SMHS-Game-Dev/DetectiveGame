@@ -12,6 +12,18 @@ corner_radius_top_right = 8
 [sub_resource type="RichTextEffect" id="RichTextEffect_mjj0w"]
 script = ExtResource("2_sh7kx")
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uh443"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.101960786, 0.101960786, 0.101960786, 0.8627451)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
 [node name="DialogueBox" type="Panel" unique_id=1364974473]
 anchors_preset = -1
 anchor_top = 0.77
@@ -43,3 +55,21 @@ bbcode_enabled = true
 horizontal_alignment = 1
 vertical_alignment = 1
 custom_effects = [SubResource("RichTextEffect_mjj0w")]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1728475736]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.525
+anchor_top = -1.6
+anchor_right = 0.975
+anchor_bottom = -0.1
+grow_vertical = 0
+theme_override_constants/separation = 12
+alignment = 2
+
+[node name="Button" type="Button" parent="VBoxContainer" unique_id=1229329370]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_mjj0w")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_uh443")
+text = "This is the first option"

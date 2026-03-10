@@ -10,24 +10,24 @@ var full_text: String = ""
 var delay: float
 var tween: Tween
 
-func _ready():
+func _ready() -> void:
 	for effect in label.custom_effects:
 		if effect.bbcode == "dropin":
 			dropin_effect = effect
 			break
 
-func display_line(text: String):
+func display_line(text: String) -> void:
 	full_text = text
 	dropin_effect.reveal_times.clear()
 	label.text = "[dropin]" + full_text + "[/dropin]"
 	label.visible_characters = 0
 	is_typing = true
 	
-	var total_duration = min(0.05 * text.length(), 5.0)
+	var total_duration: float = min(0.05 * text.length(), 5.0)
 	delay = total_duration / text.length()
 	
 	for i in range(text.length()):
-		var reveal_time = Time.get_ticks_msec() / 1000.0 + (i * delay)
+		var reveal_time: float = Time.get_ticks_msec() / 1000.0 + (i * delay)
 		dropin_effect.reveal_times.append(reveal_time)
 	
 	tween = create_tween()
@@ -51,7 +51,7 @@ func skip_animation() -> void:
 	is_typing = false
 	animation_finished.emit()
 
-func _type_next_character(index: int):
+func _type_next_character(index: int) -> void:
 	if index >= full_text.length():
 		is_typing = false
 		label.text = label.get_parsed_text()

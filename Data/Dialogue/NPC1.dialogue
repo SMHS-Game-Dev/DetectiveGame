@@ -1,0 +1,7 @@
+~ start
+npc1: i am npc 1
+detective: waow
+npc1: here's an option
+- ok
+	npc1: you clicked it
+=> END

@@ -19,27 +19,27 @@ func _on_interactable_player_near(state: bool) -> void:
 	else:
 		hide_key()
 
-func show_key():
+func show_key() -> void:
 	modulate.a = 0
 	visible = true
 	
-	var moveTween = create_tween()
+	var moveTween: Tween = create_tween()
 	moveTween.tween_property(self, "position:y", location.y, 0.3) \
 	.set_ease(Tween.EASE_OUT) \
 	.set_trans(Tween.TRANS_QUART)
 	
-	var opacityTween = create_tween()
+	var opacityTween: Tween = create_tween()
 	opacityTween.tween_property(self, "modulate:a", 1, 0.3) \
 	.set_ease(Tween.EASE_OUT) \
 	.set_trans(Tween.TRANS_QUART)
 	
-func hide_key():
-	var moveTween = create_tween()
+func hide_key() -> void:
+	var moveTween: Tween = create_tween()
 	moveTween.tween_property(self, "position:y", location.y + 20, 0.3) \
 	.set_ease(Tween.EASE_OUT) \
 	.set_trans(Tween.TRANS_QUART)
 	
-	var opacityTween = create_tween()
+	var opacityTween: Tween = create_tween()
 	opacityTween.tween_property(self, "modulate:a", 0, 0.3) \
 	.set_ease(Tween.EASE_OUT) \
 	.set_trans(Tween.TRANS_QUART)

@@ -19,15 +19,15 @@ func _on_interact_box_body_exited(body: Node2D) -> void:
 
 func _input(event: InputEvent) -> void:
 	if $KeyPopup.can_interact:
-		if event.is_action_pressed("interact"):
-			if (DialogueManager.in_dialogue):
-				DialogueManager.advance_dialogue()
-				if not DialogueManager.in_dialogue:
+		if event.is_action_pressed("interact") and ((not GameDialogueManager.dialogue_options) or GameDialogueManager.is_animating):
+			if (GameDialogueManager.in_dialogue):
+				GameDialogueManager.advance_dialogue()
+				if not GameDialogueManager.in_dialogue:
 					$KeyPopup.show_key()
 			else:
-				DialogueManager.start_dialogue(dialogue_file)
+				GameDialogueManager.start_dialogue(dialogue_file)
 				$KeyPopup.hide_key()
-		elif event.is_action_pressed("advance_dialogue") and DialogueManager.in_dialogue:
-			DialogueManager.advance_dialogue()
-			if not DialogueManager.in_dialogue:
+		elif event.is_action_pressed("advance_dialogue") and GameDialogueManager.in_dialogue and ((not GameDialogueManager.dialogue_options) or GameDialogueManager.is_animating):
+			GameDialogueManager.advance_dialogue()
+			if not GameDialogueManager.in_dialogue:
 					$KeyPopup.show_key()

@@ -17,11 +17,12 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-DialogueManager="*uid://bb7ul7jnvhn5k"
+GameDialogueManager="*uid://bb7ul7jnvhn5k"
+DialogueManager="*uid://c3rodes2l3gxb"
 
 [editor_plugins]
 
-enabled=PackedStringArray()
+enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg")
 
 [input]
 
@@ -55,6 +56,10 @@ advance_dialogue={
 "events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":1,"position":Vector2(249.39844, 25),"global_position":Vector2(258.39844, 73),"factor":1.0,"button_index":1,"canceled":false,"pressed":true,"double_click":false,"script":null)
 ]
 }
+
+[internationalization]
+
+locale/translations_pot_files=PackedStringArray("res://Data/Dialogue/NPC1.dialogue", "res://Data/Dialogue/NPC2.dialogue", "res://Data/Dialogue/NPC3.dialogue", "res://Data/Dialogue/NPC4.dialogue")
 
 [physics]
 

@@ -6,7 +6,7 @@ var input: Vector2 = Vector2.ZERO
 var timer: float = 0.0
 
 func _physics_process(delta: float) -> void:
-	input = Input.get_vector("left", "right", "up", "down") if not DialogueManager.in_dialogue else Vector2.ZERO
+	input = Input.get_vector("left", "right", "up", "down") if not GameDialogueManager.in_dialogue else Vector2.ZERO
 	
 	velocity.x = input.x * SPEED
 	velocity.y = input.y * SPEED

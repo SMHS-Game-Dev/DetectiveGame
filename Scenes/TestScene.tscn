@@ -28,19 +28,19 @@ texture = SubResource("GradientTexture2D_vixnb")
 
 [node name="NPC 1" parent="." unique_id=580602865 instance=ExtResource("2_8k7wh")]
 position = Vector2(-350, -200)
-dialogue_file = "res://JSON/Dialogue/NPC1.json"
+dialogue_file = "res://Data/Dialogue/NPC1.dialogue"
 
 [node name="NPC 2" parent="." unique_id=980967710 instance=ExtResource("2_8k7wh")]
 position = Vector2(0, -200)
-dialogue_file = "res://JSON/Dialogue/NPC2.json"
+dialogue_file = "res://Data/Dialogue/NPC2.dialogue"
 
 [node name="NPC 3" parent="." unique_id=22524369 instance=ExtResource("2_8k7wh")]
 position = Vector2(348, -200)
-dialogue_file = "res://JSON/Dialogue/NPC3.json"
+dialogue_file = "res://Data/Dialogue/NPC3.dialogue"
 
 [node name="NPC 4" parent="." unique_id=1214360852 instance=ExtResource("2_8k7wh")]
 position = Vector2(64, -858)
-dialogue_file = "res://JSON/Dialogue/NPC4.json"
+dialogue_file = "res://Data/Dialogue/NPC4.dialogue"
 
 [node name="GUI" type="CanvasLayer" parent="." unique_id=1279686815]
 

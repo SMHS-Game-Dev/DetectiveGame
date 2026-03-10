@@ -1,0 +1,9 @@
+~ start
+npc2: i am npc 2
+- hello npc 2
+	npc2: yo
+	- ok bye
+		npc2: bye
+- bye
+	npc2: bye
+=> END

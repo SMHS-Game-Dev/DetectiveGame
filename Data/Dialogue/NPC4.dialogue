@@ -1,0 +1,12 @@
+~ start
+npc4: how did you find me
+- idk
+	npc4: what
+	- take me back to start
+		npc4: ok
+		=> start
+	- ok bye
+		npc4: bye
+- ok bye
+	npc4: bye
+=> END
