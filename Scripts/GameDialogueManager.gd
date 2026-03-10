@@ -16,10 +16,8 @@ var in_dialogue: bool = false
 func _ready() -> void:	
 	canvas_layer = CanvasLayer.new()
 	get_tree().root.add_child.call_deferred(canvas_layer)
-	await get_tree().process_frame
 	dialogue_box = DIALOGUE_BOX_SCENE.instantiate() as Panel
 	canvas_layer.add_child(dialogue_box)
-	await get_tree().process_frame
 	dialogue_box.visible = false
 	dialogue_box.connect("resized", _on_dialogue_resized)
 	dialogue_box.connect("animation_finished", _on_animation_finished)
@@ -57,8 +55,6 @@ func start_dialogue(path: String) -> void:
 func show_line(response_id: String) -> void:
 	if dialogue_line != null:
 		if dialogue_box.get_children().size() == 3:
-			if not response_id.is_empty(): print(response_id)
-			print(dialogue_line)
 			for child in (dialogue_box.get_child(2) as VBoxContainer).get_children():
 				child.queue_free()
 			dialogue_options = false
