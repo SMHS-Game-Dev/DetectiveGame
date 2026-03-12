@@ -199,7 +199,7 @@ func _merge_format_ranges(fmt: String) -> void:
 func _shift_all_ranges(from_pos: int, delta: int) -> void:
 	for fmt in format_ranges:
 		for r in format_ranges[fmt]:
-			if r[0] >= from_pos:
+			if r[0] > from_pos:
 				r[0] = max(0, r[0] + delta)
 			if r[1] > from_pos:
 				r[1] = max(0, r[1] + delta)

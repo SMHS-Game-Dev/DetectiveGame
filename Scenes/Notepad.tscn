@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cqjqtywnr3lfw"]
 
-[ext_resource type="Script" uid="uid://b7sc7aolygoo" path="res://Notepad.gd" id="1_vl2d3"]
+[ext_resource type="Script" uid="uid://b7sc7aolygoo" path="res://Scripts/Notepad.gd" id="1_vl2d3"]
 [ext_resource type="FontFile" uid="uid://db3srdpi3haqe" path="res://Fonts/CourierPrime.ttf" id="2_i4sf8"]
 [ext_resource type="FontFile" uid="uid://bv5okeajfh1qa" path="res://Fonts/CourierPrime-Bold.ttf" id="3_774h2"]
 [ext_resource type="FontFile" uid="uid://b53ybr2pjapln" path="res://Fonts/CourierPrime-BoldItalic.ttf" id="4_0va7j"]
