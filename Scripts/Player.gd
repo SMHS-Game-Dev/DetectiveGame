@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+class_name Player
+
 const SPEED: float = 300.0
 const NOTEPAD: Resource = preload("res://Scenes/Notepad.tscn")
 
@@ -21,7 +23,6 @@ func _ready() -> void:
 	GameDialogueManager.canvas_layer.add_child(notepad)
 	
 func _show_notepad() -> void:
-	notepad_edit.grab_focus()
 	notepad_anim_done = false
 	notepad_open = true
 	notepad.visible = true
@@ -30,9 +31,11 @@ func _show_notepad() -> void:
 	.set_ease(Tween.EASE_OUT) \
 	.set_trans(Tween.TRANS_QUART)
 	await notepadTween.finished
+	notepad_edit.grab_focus()
 	notepad_anim_done = true
 	
 func _hide_notepad() -> void:
+	notepad_edit.release_focus()
 	notepad_anim_done = false
 	notepad_open = false
 	var notepadTween: Tween = create_tween()
